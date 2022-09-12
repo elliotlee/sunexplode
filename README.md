@@ -1,2 +1,2 @@
 # sunexplode
-sunexplode.com
+https://www.sunexplode.com
