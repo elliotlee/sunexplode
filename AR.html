@@ -13,6 +13,12 @@
         renderer='antialias: true; alpha: true'>
             <a-camera gps-projected-camera rotation-reader></a-camera>
             <a-box gps-projected-entity-place='latitude: 37.3542852; longitude: -121.9398402' material='color: red' scale='10 10 10'></a-box>
+            <a-assets>
+                <a-asset-item id="monjerio" src="/models/monjerio.obj"></a-asset-item>
+                
+            </a-assets>
+
+            <a-entity obj-model="obj: #monjerio"></a-entity>
         </a-scene>
     </body>
 </html>
