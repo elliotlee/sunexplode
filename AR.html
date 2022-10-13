@@ -25,8 +25,8 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no'>
     <meta name='mobile-web-app-capable' content='yes'>
     <meta name='apple-mobile-web-app-capable' content='yes'>
-    <link rel='icon' type='image/png' sizes='32x32' href='favicon-32x32.png'>
-    <link rel='icon' type='image/png' sizes='96x96' href='favicon-96x96.png'>
+    <link rel='icon' type='arcoretest/image/png' sizes='32x32' href='favicon-32x32.png'>
+    <link rel='icon' type='arcoretest/image/png' sizes='96x96' href='favicon-96x96.png'>
     <link rel='stylesheet' href='css/common.css'>
 
     <title>Immersive AR Session</title>
@@ -46,17 +46,17 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       </details>
     </header>
     <script type="module">
-      import {WebXRButton} from './js/util/webxr-button.js';
-      import {Scene} from './js/render/scenes/scene.js';
-      import {Renderer, createWebGLContext} from './js/render/core/renderer.js';
-      import {SkyboxNode} from './js/render/nodes/skybox.js';
-      import {InlineViewerHelper} from './js/util/inline-viewer-helper.js';
-      import {Gltf2Node} from './js/render/nodes/gltf2.js';
-      import {QueryArgs} from './js/util/query-args.js';
+      import {WebXRButton} from 'arcoretest/js/util/webxr-button.js';
+      import {Scene} from 'arcoretest/js/render/scenes/scene.js';
+      import {Renderer, createWebGLContext} from 'arcoretest/js/render/core/renderer.js';
+      import {SkyboxNode} from 'arcoretest/js/render/nodes/skybox.js';
+      import {InlineViewerHelper} from 'arcoretest/js/util/inline-viewer-helper.js';
+      import {Gltf2Node} from 'arcoretest/js/render/nodes/gltf2.js';
+      import {QueryArgs} from 'arcoretest/js/util/query-args.js';
 
       // If requested, use the polyfill to provide support for mobile devices
       // and devices which only support WebVR.
-      import WebXRPolyfill from './js/third-party/webxr-polyfill/build/webxr-polyfill.module.js';
+      import WebXRPolyfill from 'arcoretest/js/third-party/webxr-polyfill/build/webxr-polyfill.module.js';
       if (QueryArgs.getBool('usePolyfill', true)) {
         let polyfill = new WebXRPolyfill();
       }
