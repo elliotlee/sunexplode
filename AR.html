@@ -7,14 +7,14 @@
         <!-- Look-at component. We don't need this now, but we will later. -->
         <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
         <script src="js/gesture-detector.js"></script>
-    <script src="js/gesture-handler.js"></script>
+        <script src="js/gesture-handler.js"></script>
     </head>
     <body>
-    <a-scene
-        gesture-detector
-        vr-mode-ui="enabled: false"
-        arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false;'
-        renderer='antialias: true; alpha: true'>
+        <a-scene
+            vr-mode-ui="enabled: false"
+            arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false;'
+            renderer='antialias: true; alpha: true'
+            gesture-detector>
             <a-camera gps-projected-camera rotation-reader></a-camera>
            
             <a-assets>
