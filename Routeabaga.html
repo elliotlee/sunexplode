@@ -90,19 +90,6 @@
     </div>
     </div>
 
-    <div>
-      <a href="https://www.youtube.com/watch?v=KU5y1T3mvlA">https://www.youtube.com/watch?v=KU5y1T3mvlA</a>
-    </div>
-
-      <ul class="list-group list-group-flush ">
-          <li class="list-group-item"> HTML/CSS(bootstrap5)</li>
-          <li class="list-group-item">javascript</li>
-          <li class="list-group-item">inrix API - findroute, fuelstations, safetyalertsincidents</li>
-          <li class="list-group-item">google API - directions</li>
-          <li class="list-group-item">leaflet.js (openstreetmap)</li>
-          <li class="list-group-item">node.js</li>
-      </div>
-
 
 
 <script>
@@ -228,11 +215,10 @@
         let gasMileage = document.getElementById("mpg").value;
 
 
-        /* http://localhost:8000/getgooglex1=" + wp1x 
+        //http://localhost:8000/getgooglex1=" + wp1x 
         var apiUrl = 'http://localhost:8000/gettoken';
         fetch(apiUrl).then(response => {
-          return 1;
-          // return response.json();
+          return response.json();
         }).then(data => {
           // Work with JSON data here
             
@@ -265,7 +251,7 @@
 
                 carDistance = json.result.trip.routes[0].totalDistance;
                 carTime = json.result.trip.routes[0].travelTimeMinutes;
-                carCost = Math.round(100 * ((carDistance * (1/gasMileage) * 6.06) + 5 ))/100;
+                // carCost = Math.round(100 * ((carDistance * (1/gasMileage) * 6.06) + 5 ))/100;
                 
                 
                 var incidentURL = "https://api.iq.inrix.com/v1/incidents?box=" + wp1x + "%7C" + wp1y + "%2C" + wp2x + "%7C" + wp2y + "&incidentoutputfields=All&incidenttype=Incidents,Flow,Construction&locale=en"
@@ -275,7 +261,7 @@
                 .then(json => {
                     console.log(json)
 
-                console.log("incidents " + json.result.incidents);
+                //console.log("incidents " + json.result.incidents);
                 let length = json.result.incidents.length;
                 var incidents = Array.from(Array(length), () => new Array(2));
                 var sev;
@@ -283,11 +269,11 @@
                 
                 for(let i = 0; i<length; i++) {
                   incidents[i][0] = json.result.incidents[i].geometry.coordinates[1];
-                  console.log(json.result.incidents[i].geometry.coordinates)
+                  //console.log(json.result.incidents[i].geometry.coordinates)
                   incidents[i][1] = json.result.incidents[i].geometry.coordinates[0];
                   sev = json.result.incidents[i].severity;
                   set.add(sev);
-                  console.log("Dfgkjdfkgjdlkfg"+incidents[i]);
+                  //console.log("Dfgkjdfkgjdlkfg"+incidents[i]);
 
                   if(sev==4) {
                     let circle = L.circleMarker(incidents[i], {
@@ -385,9 +371,10 @@
                   carCost=-1;
                   carCost = Math.round(100 * ((carDistance * (1/gasMileage) * avgPrice) + 5 ))/100;
                   out11.innerText = "$" + carCost
-                  console.log("carcost in html"+carCost)
+                        //console.log("carcost in html"+carCost)
                 })
 
+                // carCost = Math.round(100 * ((carDistance * (1/gasMileage) * avgPrice) + 5 ))/100;
 
                 
                 var bikeUrl = "http://localhost:8000/getbike?x1=" + wp1x + "&y1=" + wp1y + "&x2=" + wp2x + "&y2=" + wp2y;
@@ -443,8 +430,8 @@
                         
                         out9.innerText =  "$0"
                         out10.innerText = "$0"
-
-                        console.log("carcost in html"+carCost)
+                        // out11.innerText = "$" + carCost
+                        // console.log("carcost in html"+carCost)
 
                         out4.innerText = "-"
                         out8.innerText = "-"
@@ -515,8 +502,20 @@
                             console.log(transitTime)
                             console.log(transitCost)
 
-                }).catch(err => {            
+
+
+                            
+
+
+                }).catch(err => {
+                    
                 });
+
+
+
+
+
+
 
 
                     }).catch(err => {
@@ -527,7 +526,26 @@
                 });
 
 
-                
+                /*
+                var googleUrl = "https://maps.googleapis.com/maps/api/directions/json?origin=" + wp1x + "%2C" + wp1y + "&destination=" + wp2x + "%2C" + wp2y + "&mode=bicycling"
+                var googleHeaders = new Headers();
+                googleHeaders.append("Authorization", "AIzaSyDB8n-0BWGGHjmWlYpWSGpvWa-M-f5F8BU");
+                googleHeaders.append('Access-Control-Allow-Origin', 'http://localhost:3000');
+                googleHeaders.append('Access-Control-Allow-Credentials', 'true');
+
+                var googleOptions = {
+                method: 'GET',
+                headers: googleHeaders,
+                redirect: 'follow'
+                };
+
+                fetch(googleUrl, googleOptions)
+                }).then(data => {
+                    console.log("hit")
+                    //json.routes[0].legs[0].duration.text;
+                }).catch(err => {
+                alert("google error")
+                */
             }).catch(err => {
                 alert("inrix api error")
             })
@@ -535,7 +553,6 @@
         }).catch(err => {
           alert("token error")
         });
-        */
   }
 
 
