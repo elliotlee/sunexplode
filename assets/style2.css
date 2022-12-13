@@ -114,7 +114,7 @@ li:last-child {
 
 @keyframes grow {
     from {
-        transform: scale(0.98);
+        transform: scale(0.96);
         opacity: 0.2;
     }
     to {
