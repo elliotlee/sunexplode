@@ -50,6 +50,10 @@ a:hover {
   opacity: 0.5;
 }
 
+a:not([href]):not([class]), a:not([href]):not([class]):hover {
+  color: #707070;
+}
+
 h1 {
   font-family: 'Rubik 80s Fade', cursive; 
 }
