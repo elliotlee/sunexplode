@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+80s+Fade&display=swap');
+
+html {
+  height: 100%;
+}
+
+body {
+  background-color: white;
+  height: 100%;
+}
+
+main {
+  font-family: 'Helvetica';
+  height: 100%;
+}
+
+.container {
+  margin-left: 0;
+  margin-right: 0;
+  max-width: 100%;
+  height: 100%;
+}
+
+.row {
+  height: 100%;
+}
+
+.background {
+  background-size:  100% auto;
+  background-color: black;
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+  background-repeat: no-repeat;
+}
+
+a {
+  text-decoration: none;
+  color: #707070;
+/*  transition: 0.4s;*/
+  transition: all 2s cubic-bezier(0, 1, 1, 1);
+}
+
+a:hover {
+  background-color: #e3e3e3;
+  color: #343434;
+  filter: blur(5px);
+  opacity: 0.5;
+}
+
+h1 {
+  font-family: 'Rubik 80s Fade', cursive; 
+}
+
+
+/*h3 {
+  font-family: 'Rubik 80s Fade', cursive; 
+}*/
+
+
+li{
+  list-style: none;
+  letter-spacing: 2px;  
+  line-height: 1em;
+  font-size: 12px;
+}
+
+li:not(:last-child) {
+  margin-bottom: 0.5em;
+}
+
+li:last-child {
+  margin-bottom: 2em;
+}
+
+
+
