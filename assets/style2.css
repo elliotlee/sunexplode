@@ -41,7 +41,7 @@ a {
   text-decoration: none;
   color: #707070;
 /*  transition: 0.4s;*/
-  transition: filter 3.5s cubic-bezier(0, 1, 1, 1);
+  transition: filter 4s cubic-bezier(0.1, 1, 1, 1);
 }
 
 a:hover {
