@@ -26,8 +26,9 @@ main {
 }
 
 .background {
+/*  background-image: url("assets/images/expl.webp");*/
   background-size:  100% auto;
-  background-color: black;
+  background-color: white;
   position: relative;
   left: 0;
   top: 0;
@@ -40,7 +41,7 @@ a {
   text-decoration: none;
   color: #707070;
 /*  transition: 0.4s;*/
-  transition: all 1.8s cubic-bezier(0, 1, 1, 1);
+  transition: filter 3.5s cubic-bezier(0, 1, 1, 1);
 }
 
 a:hover {
@@ -80,4 +81,19 @@ li:last-child {
 }
 
 
+#explImg {
+  opacity:0.3;
+  width: 50%;
+  height: 80%;
+  overflow: hidden;
+}
 
+.rotate {
+  animation: rotation 177s infinite linear;
+}
+
+@keyframes rotation {
+  100% {
+    transform: rotate(360deg);
+  }
+}
