@@ -7,6 +7,18 @@ html {
 body {
   background-color: white;
   height: 100%;
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+  opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 main {
@@ -89,6 +101,8 @@ li:last-child {
 }
 
 
+
+
 #explImg {
   opacity: 1;
   width: 100%;
@@ -114,6 +128,20 @@ li:last-child {
   animation-direction:alternate;
 }
 
+@keyframes grow {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: scale(.6);
+        filter:hue-rotate(30deg);
+        filter:blur(1.5px);
+        opacity: 0.8;
+    }
+}
+
+
 
 @keyframes rotation {
   100% {
@@ -121,7 +149,7 @@ li:last-child {
   }
 }
 
-@keyframes grow {
+/*@keyframes grow {
     from {
         transform: scale(1);
         opacity: 1;
@@ -130,7 +158,7 @@ li:last-child {
         transform: scale(.7);
         opacity: 0.4;
     }
-}
+}*/
 
 @keyframes flip {
   100% {
