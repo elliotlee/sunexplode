@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Returning to Pact…</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Courier New', Courier, monospace;
+      background: #F5F0E8;
+      color: #1A1A1A;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .card {
+      border: 2px solid #1A1A1A;
+      background: #fff;
+      padding: 40px 32px;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+    h1 { font-size: 22px; letter-spacing: 3px; margin-bottom: 12px; }
+    p  { font-size: 14px; color: #555; line-height: 1.6; margin-bottom: 20px; }
+    a.btn {
+      display: inline-block;
+      background: #1A6B3C;
+      color: #fff;
+      text-decoration: none;
+      padding: 14px 32px;
+      font-family: inherit;
+      font-size: 13px;
+      letter-spacing: 2px;
+      border: 2px solid #1A1A1A;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>PACT</h1>
+    <p id="msg">Tap below to return to the app:</p>
+    <a id="btn" class="btn" style="display:none">OPEN PACT</a>
+  </div>
+
+  <script>
+    var params = window.location.search;
+    var deepLink = 'pact://connect-return' + params;
+    var btn = document.getElementById('btn');
+    btn.href = deepLink;
+    btn.style.display = 'inline-block';
+
+    setTimeout(function() { window.location.replace(deepLink); }, 100);
+  </script>
+</body>
+</html>
