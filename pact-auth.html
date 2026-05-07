@@ -31,7 +31,7 @@
       background: #1A6B3C;
       color: #fff;
       text-decoration: none;
-      padding: 12px 28px;
+      padding: 14px 32px;
       font-family: inherit;
       font-size: 13px;
       letter-spacing: 2px;
@@ -44,27 +44,34 @@
   <div class="card">
     <h1>PACT</h1>
     <p id="msg">Opening the app…</p>
-    <a id="fallback" class="btn" style="display:none">OPEN APP</a>
+    <a id="btn" class="btn" style="display:none">OPEN PACT</a>
   </div>
 
   <script>
-    const hash = window.location.hash; // #access_token=...&refresh_token=...
-    const deepLink = 'pact://auth/callback' + hash;
+    var hash = window.location.hash;
 
     if (!hash || !hash.includes('access_token')) {
-      document.getElementById('msg').textContent = 'This link has expired or is invalid. Please request a new confirmation email.';
+      document.getElementById('msg').textContent = 'This link has expired or is invalid. Please request a new one.';
       document.getElementById('msg').className = 'error';
     } else {
-      // Try to redirect immediately
-      window.location.replace(deepLink);
+      var isAndroid = /android/i.test(navigator.userAgent);
+      var fragment  = hash.substring(1); // strip leading #
 
-      // Show the manual fallback after a short delay
-      setTimeout(() => {
-        const fb = document.getElementById('fallback');
-        fb.href = deepLink;
-        fb.style.display = 'inline-block';
-        document.getElementById('msg').textContent = "If the app didn't open, tap below:";
-      }, 1500);
+      // Android needs the intent:// scheme — Chrome blocks pact:// auto-redirects
+      var deepLink = isAndroid
+        ? 'intent://auth/callback#' + fragment + '#Intent;scheme=pact;package=com.hanearl.pact;S.browser_fallback_url=' + encodeURIComponent('https://sunexplode.com') + ';end'
+        : 'pact://auth/callback' + hash;
+
+      // Show the button immediately — don't rely on auto-redirect
+      var btn = document.getElementById('btn');
+      btn.href = deepLink;
+      btn.style.display = 'inline-block';
+      document.getElementById('msg').textContent = 'Tap below to open the app:';
+
+      // Also attempt auto-open for iOS (Safari allows it)
+      if (!isAndroid) {
+        setTimeout(function() { window.location.replace(deepLink); }, 100);
+      }
     }
   </script>
 </body>
