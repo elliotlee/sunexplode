@@ -54,14 +54,24 @@
       document.getElementById('msg').textContent = 'This link has expired or is invalid. Please request a new one.';
       document.getElementById('msg').className = 'error';
     } else {
-      var deepLink = 'pact://auth/callback' + hash;
+      var fragment   = hash.substring(1); // strip leading #
+      var isAndroid  = /android/i.test(navigator.userAgent);
+      var fallback   = encodeURIComponent('https://sunexplode.com');
+
+      // Android: use intent URL with query string (avoids double-# problem).
+      // iOS: pact:// fragment works fine in Safari.
+      var deepLink = isAndroid
+        ? 'intent://auth/callback?' + fragment + '#Intent;scheme=pact;package=com.hanearl.pact;S.browser_fallback_url=' + fallback + ';end'
+        : 'pact://auth/callback' + hash;
 
       var btn = document.getElementById('btn');
       btn.href = deepLink;
       btn.style.display = 'inline-block';
 
-      // iOS Safari allows automatic redirect; Android Chrome does not but the tap above works
-      setTimeout(function() { window.location.replace(deepLink); }, 100);
+      // iOS Safari allows auto-redirect; skip on Android (Chrome blocks it anyway)
+      if (!isAndroid) {
+        setTimeout(function() { window.location.replace(deepLink); }, 100);
+      }
     }
   </script>
 </body>
