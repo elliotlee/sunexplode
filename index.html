@@ -1,31 +1,673 @@
 <!DOCTYPE html>
-<html lang = "en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>SUNEXPLODE</title>
-		<meta name="description" content="SUNEXPLODE" />
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pact — Peer-to-Peer Marketplace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+      background: #F5F0E8;
+      color: #1A1A1A;
+      min-height: 100vh;
+    }
 
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    /* ── Nav ── */
+    nav {
+      border-bottom: 2px solid #1A1A1A;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 3px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 12px;
+      color: #555;
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+    .nav-links a:hover { color: #1A1A1A; }
 
-		<link rel="stylesheet" href="assets/style2.css">
-	</head>
-	
-	<body id="top">
+    /* ── Sections ── */
+    .section {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 64px 24px;
+    }
+    .section + .section {
+      border-top: 1px solid #C8C0B0;
+    }
 
-		<main>
-			<div class="container py-2">
-				<div class="row">
-					<div class="col-4">
-						<h1><a id="main" href="index.html">SUNEXPLODE</a></h1>
+    /* ── Hero ── */
+    .hero-tag {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      color: #1A6B3C;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 700;
+      letter-spacing: 2px;
+      line-height: 1.25;
+      margin-bottom: 20px;
+    }
+    .hero-sub {
+      font-size: 15px;
+      line-height: 1.8;
+      color: #444;
+      max-width: 560px;
+      margin-bottom: 32px;
+    }
+    .btn {
+      display: inline-block;
+      background: #1A1A1A;
+      color: #F5F0E8;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-decoration: none;
+      padding: 14px 28px;
+      border: 2px solid #1A1A1A;
+    }
+    .btn:hover { background: #333; }
+    .btn-ghost {
+      background: transparent;
+      color: #1A1A1A;
+      margin-left: 12px;
+    }
+    .btn-ghost:hover { background: #E8E3DB; }
 
-						<div class="container">
-							
-							
-						</div>
-					</div>
-				</div>
-			</div>
-		</main>
-	</body>
+    /* ── Pillars ── */
+    .pillar-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 40px;
+    }
+    @media (max-width: 560px) { .pillar-grid { grid-template-columns: 1fr; } }
+    .pillar-card {
+      border: 2px solid #1A1A1A;
+      padding: 28px 24px;
+    }
+    .pillar-icon {
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+    .pillar-title {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .pillar-desc {
+      font-size: 13px;
+      line-height: 1.8;
+      color: #444;
+    }
+
+    /* ── How it works ── */
+    h2 {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 36px;
+      color: #1A1A1A;
+    }
+    .hiw-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    @media (max-width: 620px) { .hiw-grid { grid-template-columns: 1fr; } }
+    .hiw-col-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #1A6B3C;
+      padding-bottom: 14px;
+      border-bottom: 2px solid #1A1A1A;
+      margin-bottom: 0;
+    }
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 16px;
+      padding: 20px 0;
+      border-bottom: 1px solid #C8C0B0;
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1A6B3C;
+      padding-top: 2px;
+    }
+    .step-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    .step-body {
+      font-size: 13px;
+      line-height: 1.8;
+      color: #444;
+    }
+
+    /* ── Fees ── */
+    .fee-box {
+      border: 2px solid #1A1A1A;
+      padding: 32px 28px;
+      margin-top: 40px;
+    }
+    .fee-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .fee-amount {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #1A6B3C;
+      margin-bottom: 8px;
+    }
+    .fee-desc {
+      font-size: 13px;
+      line-height: 1.8;
+      color: #444;
+      max-width: 480px;
+    }
+    .fee-example {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #C8C0B0;
+      font-size: 12px;
+      color: #555;
+      line-height: 2;
+    }
+
+    /* ── Policies ── */
+    .policy-block {
+      padding: 24px 0;
+      border-bottom: 1px solid #C8C0B0;
+    }
+    .policy-block:last-child { border-bottom: none; }
+    .policy-heading {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .policy-body {
+      font-size: 13px;
+      line-height: 1.8;
+      color: #444;
+    }
+    .policy-body ul {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0 0 0;
+    }
+    .policy-body ul li { padding-left: 16px; }
+    .policy-body ul li::before { content: '• '; }
+
+    /* ── FAQ ── */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .faq-item {
+      padding: 20px 0;
+      border-bottom: 1px solid #C8C0B0;
+    }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .faq-a {
+      font-size: 13px;
+      line-height: 1.8;
+      color: #444;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 2px solid #1A1A1A;
+      padding: 28px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-logo { font-size: 14px; font-weight: 700; letter-spacing: 2px; }
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      font-size: 12px;
+      color: #555;
+      text-decoration: none;
+    }
+    .footer-links a:hover { color: #1A1A1A; }
+    .footer-copy {
+      width: 100%;
+      font-size: 11px;
+      color: #888;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <span class="nav-logo">Pact: p2p marketplace</span>
+    <ul class="nav-links">
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#policies">Policies</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="mailto:support@sunexplode.com">Support</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <div class="section">
+    <p class="hero-tag">Peer-to-peer marketplace</p>
+    <h1>Pact: p2p marketplace</h1>
+    <h2 style="font-size:clamp(18px,3.5vw,28px);letter-spacing:1.5px;font-weight:700;margin:20px 0 16px;text-transform:none;">GET THINGS DONE.<br>GET PAID TO DO THEM.</h2>
+    <p class="hero-sub">
+      Pact connects people who need something done or want something with people who can help nearby.
+      Post what you need, find the right person, lock in a price — and pay only when you're satisfied.
+    </p>
+    <a href="#how-it-works" class="btn">HOW IT WORKS</a>
+    <a href="mailto:support@sunexplode.com" class="btn btn-ghost">CONTACT US</a>
+
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon">📋</div>
+        <div class="pillar-title">Wanted Ads</div>
+        <p class="pillar-desc">
+          Need something done or looking for something specific? Post a Wanted Ad describing what you want and your budget. People nearby apply and you pick the best fit.
+        </p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">🛠</div>
+        <div class="pillar-title">Classifieds</div>
+        <p class="pillar-desc">
+          Have a skill to offer or something to sell? Post a Classified listing advertising what you offer and your price. Clients find you and reach out directly.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- How It Works -->
+  <div class="section" id="how-it-works">
+    <h2>How It Works</h2>
+    <div class="hiw-grid">
+
+      <!-- Wanted Ads column -->
+      <div>
+        <div class="hiw-col-title">📋 Wanted Ads</div>
+        <p style="font-size:13px;color:#444;line-height:1.8;margin:10px 0 0;">Need something done or looking for something specific? Post what you want, set your budget, and let people come to you.</p>
+        <div class="steps">
+
+          <div class="step">
+            <div class="step-num">01</div>
+            <div>
+              <div class="step-title">Post a Wanted Ad</div>
+              <p class="step-body">Describe what you need — a service, a task, or something specific you're looking for — set your budget, and pin it to your location. Your listing appears on the live map for nearby people to find.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">02</div>
+            <div>
+              <div class="step-title">Review Applicants</div>
+              <p class="step-body">Specialists apply with a note and an optional counter-offer. Browse their profiles, ratings, and past work before choosing who to hire.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">03</div>
+            <div>
+              <div class="step-title">Seal the Pact</div>
+              <p class="step-body">Select your specialist and seal the Pact. Payment is <strong>authorized but not captured</strong> — funds are held securely until the work is done. Either party can cancel for free before work begins.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">04</div>
+            <div>
+              <div class="step-title">Review &amp; Release</div>
+              <p class="step-body">The specialist submits proof of completion. You review and release payment. If you don't act within 48 hours, funds are released automatically.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">05</div>
+            <div>
+              <div class="step-title">Rate &amp; Repeat</div>
+              <p class="step-body">Leave a rating for your specialist. Build a reputation that helps future clients and specialists trust each other.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Classifieds column -->
+      <div>
+        <div class="hiw-col-title">🛠 Classifieds</div>
+        <p style="font-size:13px;color:#444;line-height:1.8;margin:10px 0 0;">Have a skill or something to sell? Post your listing, set your price, and let clients find you.</p>
+        <div class="steps">
+
+          <div class="step">
+            <div class="step-num">01</div>
+            <div>
+              <div class="step-title">Post a Classified</div>
+              <p class="step-body">Advertise what you offer — a service, a skill, or goods — set your price, and pin it to your location. Your listing appears on the live map for nearby clients to discover.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">02</div>
+            <div>
+              <div class="step-title">Receive Requests</div>
+              <p class="step-body">Clients request what you're offering directly. Review their profile and ratings, then accept or decline — you're always in control of who you transact with.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">03</div>
+            <div>
+              <div class="step-title">Seal the Pact</div>
+              <p class="step-body">Once you accept, the client seals the Pact. Payment is <strong>authorized but not captured</strong> — your payout is guaranteed once the work is done. Either party can cancel for free before work begins.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">04</div>
+            <div>
+              <div class="step-title">Submit Proof &amp; Get Paid</div>
+              <p class="step-body">Complete the job and submit proof through the app — a photo, description, or both. Once the client releases payment, funds transfer to your payout account.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">05</div>
+            <div>
+              <div class="step-title">Rate &amp; Repeat</div>
+              <p class="step-body">Leave a rating for your client. A strong track record attracts more requests and helps you grow your reputation on the platform.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <p style="font-size:12px;color:#888;margin-top:32px;line-height:1.8;">
+      If there's a disagreement on either path, either party can raise a dispute. Pact reviews the evidence and resolves in favour of the specialist (payment released) or the client (full refund issued).
+    </p>
+
+  </div>
+
+  <!-- Pricing -->
+  <div class="section" id="pricing">
+    <h2>Pricing</h2>
+    <p style="font-size:13px;line-height:1.8;color:#444;max-width:540px;">
+      Pact charges a small platform fee on each completed transaction. There are no listing fees,
+      no subscription costs, and no charges if a pact is cancelled before work begins.
+    </p>
+
+    <div class="fee-box">
+      <div class="fee-title">Platform Fee</div>
+      <div class="fee-amount">5% + $0.25</div>
+      <p class="fee-desc">
+        A platform fee of 5% + $0.25 applies to both sides of every completed transaction —
+        charged to the client on top of the agreed price as a platform fee, and deducted from the specialist's payout.
+        Card processing is grossed up so the platform absorbs no processing costs.
+        Tax is added where applicable and varies by location.
+      </p>
+      <div class="fee-example">
+        <strong>Example — $100 agreed price (no tax):</strong>
+        <div style="margin-top:12px;">
+          <div style="font-weight:700;padding:4px 0 6px;">Client pays</div>
+          <div style="display:flex;align-items:baseline;padding:3px 0;"><span>Agreed price</span><span style="flex:1;border-bottom:1px dotted #999;margin:0 6px;position:relative;top:-3px;"></span><span>$100.00</span></div>
+          <div style="display:flex;align-items:baseline;padding:3px 0;"><span>Platform fee (5% + $0.25)</span><span style="flex:1;border-bottom:1px dotted #999;margin:0 6px;position:relative;top:-3px;"></span><span>$5.25</span></div>
+          <div style="display:flex;align-items:baseline;padding:3px 0;"><span>Sales tax (est., varies)</span><span style="flex:1;border-bottom:1px dotted #999;margin:0 6px;position:relative;top:-3px;"></span><span>$0.00+</span></div>
+          <div style="display:flex;align-items:baseline;padding:3px 0;"><span>Card processing (est.)</span><span style="flex:1;border-bottom:1px dotted #999;margin:0 6px;position:relative;top:-3px;"></span><span>$3.45</span></div>
+          <div style="display:flex;align-items:baseline;padding:6px 0 4px;border-top:1px solid #C8C0B0;margin-top:4px;font-weight:700;"><span>Total charged</span><span style="flex:1;"></span><span>$108.70 + tax</span></div>
+        </div>
+        <div style="margin-top:16px;">
+          <div style="font-weight:700;padding:4px 0 6px;">Specialist receives</div>
+          <div style="display:flex;align-items:baseline;padding:3px 0;"><span>Agreed price</span><span style="flex:1;border-bottom:1px dotted #999;margin:0 6px;position:relative;top:-3px;"></span><span>$100.00</span></div>
+          <div style="display:flex;align-items:baseline;padding:3px 0;"><span>Platform fee (5% + $0.25)</span><span style="flex:1;border-bottom:1px dotted #999;margin:0 6px;position:relative;top:-3px;"></span><span>−$5.25</span></div>
+          <div style="display:flex;align-items:baseline;padding:6px 0 4px;border-top:1px solid #C8C0B0;margin-top:4px;font-weight:700;"><span>Specialist payout</span><span style="flex:1;"></span><span>$94.75</span></div>
+        </div>
+      </div>
+    </div>
+
+    <p style="font-size:12px;color:#888;margin-top:16px;line-height:1.8;">
+      Card processing fees are estimates based on standard Stripe rates and vary by card type.
+      Tax is calculated at checkout based on the applicable rate for your location.
+      Specialists must connect a payout account via Stripe Express to receive funds.
+      Payout processing fees apply for immediate withdrawals — see the app for current rates.
+    </p>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section" id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-q">Is Pact available on iOS and Android?</div>
+        <p class="faq-a">Yes. Pact is available on both the Apple App Store and Google Play Store.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What happens if I'm not happy with the work?</div>
+        <p class="faq-a">
+          Don't release the funds. Instead, raise a dispute through the app and submit your evidence.
+          Pact will review both sides and issue a resolution — either releasing payment to the specialist
+          or refunding the full amount to you.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">When does the specialist get paid?</div>
+        <p class="faq-a">
+          Once the client releases the funds or the 48-hour auto-release window passes after proof submission.
+          Funds are transferred to the specialist's connected Stripe Express payout account.
+          Scheduled payouts process every Friday; immediate payouts are available for a small fee.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What if a pact is cancelled?</div>
+        <p class="faq-a">
+          Either party can cancel at no cost before proof is submitted. The payment authorization hold
+          is released immediately and no charge is made. Once proof has been submitted, cancellation
+          is no longer available — only release or dispute.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Is my payment information secure?</div>
+        <p class="faq-a">
+          Yes. All payments are processed by <strong>Stripe</strong> — a PCI-DSS Level 1 certified payment processor.
+          Pact never stores card numbers. Payment is authorized at seal time and only captured
+          when the work is confirmed complete.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What can be listed on Pact?</div>
+        <p class="faq-a">
+          Anything legal — services like home repairs, cleaning, tutoring, creative work, and tech help,
+          as well as physical goods and locally sourced items.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">How do I contact support?</div>
+        <p class="faq-a">
+          Email us at <a href="mailto:support@sunexplode.com" style="color:#1A6B3C;">support@sunexplode.com</a>.
+          We aim to respond within 24 hours.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Policies -->
+  <div class="section" id="policies">
+    <h2>Policies</h2>
+
+    <div class="policy-block">
+      <div class="policy-heading">Cancellation Policy</div>
+      <p class="policy-body">
+        Either party may cancel a Pact at any time <strong>before proof of completion is submitted</strong> at no cost.
+        The payment authorization hold is released immediately and no charge is made to the client.
+        Once a specialist has submitted proof of completion, cancellation is no longer available —
+        the client must either release the funds or raise a dispute.
+      </p>
+    </div>
+
+    <div class="policy-block">
+      <div class="policy-heading">Refund Policy</div>
+      <p class="policy-body">
+        Pact is a marketplace platform and does not itself sell goods or services — all transactions are arranged directly between users.
+        Refunds are issued in the following circumstances:
+        <ul>
+          <li>A Pact is cancelled before proof submission — the full authorized amount is released at no charge.</li>
+          <li>A dispute is raised and resolved in the client's favour — the full pact amount is refunded to the original payment method.</li>
+          <li>A pact is voided due to a platform enforcement action — any captured funds are refunded in full.</li>
+        </ul>
+        Refunds are processed through Stripe and typically appear within 5–10 business days depending on the card issuer.
+        To request a refund outside of the above scenarios, contact <a href="mailto:support@sunexplode.com" style="color:#1A6B3C;">support@sunexplode.com</a>.
+      </p>
+    </div>
+
+    <div class="policy-block">
+      <div class="policy-heading">Dispute Resolution Policy</div>
+      <p class="policy-body">
+        If a client is unsatisfied with the completed work, either party may raise a dispute through the app before releasing payment.
+        Both parties are required to submit evidence. Pact reviews the evidence and issues one of the following resolutions:
+        <ul>
+          <li><strong>In favour of the specialist</strong> — payment is captured and transferred to the specialist.</li>
+          <li><strong>In favour of the client</strong> — the full pact amount is refunded to the client.</li>
+        </ul>
+        Dispute decisions are final. For escalations, contact <a href="mailto:support@sunexplode.com" style="color:#1A6B3C;">support@sunexplode.com</a>.
+        Users who repeatedly raise frivolous disputes may have their accounts suspended.
+      </p>
+    </div>
+
+    <div class="policy-block">
+      <div class="policy-heading">Return Policy</div>
+      <p class="policy-body">
+        Pact does not directly sell goods or services and has no return policy of its own.
+        Any return or exchange arrangement for physical goods transacted between users is solely between those users.
+        Pact's dispute resolution process covers payment disputes — not physical returns or exchanges.
+      </p>
+    </div>
+
+    <div class="policy-block">
+      <div class="policy-heading">Off-Platform Payments</div>
+      <p class="policy-body">
+        Arranging payment outside of the Pact platform is strictly prohibited and may result in a permanent ban.
+        Pact's escrow-based payment system exists specifically to protect both parties — bypassing it removes the
+        dispute resolution, refund guarantees, and payment security that the platform is designed to provide.
+        All transactions arranged through Pact must be completed through the app.
+      </p>
+    </div>
+
+    <div class="policy-block">
+      <div class="policy-heading">Legal &amp; Export Restrictions</div>
+      <p class="policy-body">
+        The platform may not be used to arrange transactions for goods or services that are illegal under applicable law in the user's jurisdiction.
+        Users are solely responsible for ensuring their listings and activities comply with all applicable laws,
+        including any licensing, permit, or insurance requirements relevant to what they offer.
+        Pact does not facilitate the sale or export of controlled goods, weapons, hazardous materials,
+        or any item subject to US export control regulations (EAR/ITAR).
+      </p>
+    </div>
+
+    <div class="policy-block">
+      <div class="policy-heading">Promotions</div>
+      <p class="policy-body">
+        From time to time Pact may offer promotional credits, fee waivers, or featured listing discounts.
+        All promotions are:
+        <ul>
+          <li>Subject to availability and may be withdrawn at any time without notice.</li>
+          <li>Non-transferable and have no cash value unless stated otherwise.</li>
+          <li>Limited to one per user account unless explicitly stated.</li>
+          <li>Void where prohibited by law.</li>
+        </ul>
+        Abuse of promotional offers — including creating multiple accounts to claim the same promotion —
+        is a violation of our <a href="/terms.html" style="color:#1A6B3C;">Terms of Service</a> and may result in account suspension.
+      </p>
+    </div>
+
+    <div class="policy-block">
+      <div class="policy-heading">Customer Service</div>
+      <p class="policy-body">
+        For support, billing questions, disputes, or account issues, contact us at:<br><br>
+        <strong>Email:</strong> <a href="mailto:support@sunexplode.com" style="color:#1A6B3C;">support@sunexplode.com</a><br><br>
+        Full legal documentation is available at <a href="/terms.html" style="color:#1A6B3C;">Terms of Service</a>
+        and <a href="/privacy.html" style="color:#1A6B3C;">Privacy Policy</a>.
+      </p>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <span class="footer-logo">PACT</span>
+    <ul class="footer-links">
+      <li><a href="#policies">Policies</a></li>
+      <li><a href="/terms.html">Terms of Service</a></li>
+      <li><a href="/privacy.html">Privacy Policy</a></li>
+      <li><a href="mailto:support@sunexplode.com">support@sunexplode.com</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 Pact. All rights reserved.</p>
+  </footer>
+
+</body>
 </html>
