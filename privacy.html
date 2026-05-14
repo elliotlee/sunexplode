@@ -105,6 +105,8 @@
     <h3>Information you provide</h3>
     <ul>
       <li>Email address and display name at registration</li>
+      <li>Mobile phone number (when you add it for account verification)</li>
+      <li>SMS consent status and the date you opted in (if you choose to receive text messages)</li>
       <li>Profile photo (optional)</li>
       <li>Listing content: titles, descriptions, photos, location, pricing</li>
       <li>Application notes and photos</li>
@@ -134,6 +136,7 @@
       <li>Display listings, profiles, and pact details to relevant users</li>
       <li>Facilitate pact agreements and payment flows</li>
       <li>Send push notifications and in-app notifications about activity relevant to you</li>
+      <li>Send transactional SMS messages to your verified phone number (verification codes and account notifications) if you have opted in</li>
       <li>Calculate and display distance between you and listings</li>
       <li>Resolve disputes and support requests</li>
       <li>Detect fraud and enforce our Terms of Service</li>
@@ -157,8 +160,12 @@
       <li>Supabase (database, authentication, file storage, real-time) — data is stored on Supabase infrastructure</li>
       <li>Expo / Expo Push Service (push notification delivery to FCM and APNs)</li>
       <li>Google Maps (mapping and geocoding — location data shared per Google's Privacy Policy)</li>
+      <li>SMS gateway provider (phone number shared solely to deliver verification codes to opted-in users; not used for any other purpose)</li>
       <li>Stripe (payment processing, Phase 2 only)</li>
     </ul>
+
+    <h3>SMS data — no marketing use</h3>
+    <p>Your phone number and SMS consent information are used only to deliver the transactional messages described above. We do not share, sell, rent, or otherwise disclose your phone number or SMS opt-in data to any third party for marketing purposes or for any use beyond message delivery. Text messages from Pact will never be used for advertising, promotions, or marketing campaigns.</p>
 
     <h3>Legal requirements</h3>
     <p>We may disclose your information if required by law, court order, or government authority, or if we believe disclosure is necessary to protect the rights, property, or safety of Pact, our users, or the public.</p>
@@ -191,6 +198,7 @@
       <li>Request correction of inaccurate data</li>
       <li>Request deletion of your account and associated data</li>
       <li>Withdraw consent for push notifications via your device settings</li>
+      <li>Opt out of SMS messages at any time by replying STOP to any text from Pact</li>
     </ul>
     <p>Contact us at <a class="email" href="mailto:support@sunexplode.com">support@sunexplode.com</a> to exercise any of these rights.</p>
 
