@@ -42,10 +42,47 @@
       letter-spacing: 1px;
     }
     .nav-links a:hover { color: #1A1A1A; }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #1A1A1A;
+    }
+    .nav-mobile {
+      display: none;
+      flex-direction: column;
+      border-top: 1px solid #C8C0B0;
+      background: #F5F0E8;
+    }
+    .nav-mobile a {
+      font-size: 16px;
+      color: #555;
+      text-decoration: none;
+      letter-spacing: 1px;
+      padding: 14px 24px;
+      border-bottom: 1px solid #E8E0D0;
+      display: block;
+    }
+    .nav-mobile a:last-child { border-bottom: none; }
+    .nav-mobile a:hover { color: #1A1A1A; }
+    .nav-mobile.open { display: flex; }
+    @media (max-width: 620px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+    }
 
     /* ── Sections ── */
     .section {
-      max-width: 760px;
+      max-width: 900px;
       margin: 0 auto;
       padding: 64px 24px;
     }
@@ -132,21 +169,65 @@
       margin-bottom: 36px;
       color: #1A1A1A;
     }
-    .hiw-grid {
+    .lifecycle {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
+      grid-template-columns: repeat(4, 1fr);
+      border: 2px solid #1A1A1A;
+      margin-bottom: 28px;
     }
-    @media (max-width: 620px) { .hiw-grid { grid-template-columns: 1fr; } }
-    .hiw-col-title {
+    @media (max-width: 620px) { .lifecycle { grid-template-columns: repeat(2, 1fr); } }
+    .lifecycle-step {
+      padding: 20px 16px;
+      border-right: 1px solid #C8C0B0;
+    }
+    .lifecycle-step:last-child { border-right: none; }
+    @media (max-width: 620px) {
+      .lifecycle-step:nth-child(2) { border-right: none; }
+      .lifecycle-step:nth-child(1),
+      .lifecycle-step:nth-child(2) { border-bottom: 1px solid #C8C0B0; }
+    }
+    .lifecycle-num {
+      font-size: 12px;
+      font-weight: 700;
+      color: #1A6B3C;
+      letter-spacing: 2px;
+      margin-bottom: 6px;
+    }
+    .lifecycle-title {
       font-size: 17px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .lifecycle-desc {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #555;
+    }
+    .hiw-details {
+      border: 2px solid #1A1A1A;
+      margin-bottom: 12px;
+    }
+    .hiw-details summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      cursor: pointer;
+      user-select: none;
+      list-style: none;
+      font-size: 15px;
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: #1A6B3C;
-      padding-bottom: 14px;
-      border-bottom: 2px solid #1A1A1A;
-      margin-bottom: 0;
+    }
+    .hiw-details summary::-webkit-details-marker { display: none; }
+    .hiw-details summary::after { content: '▼'; font-size: 10px; color: #888; }
+    .hiw-details[open] summary::after { content: '▲'; }
+    .hiw-details-body {
+      border-top: 1px solid #C8C0B0;
+      padding: 20px;
     }
     .steps {
       display: flex;
@@ -157,26 +238,26 @@
       display: grid;
       grid-template-columns: 36px 1fr;
       gap: 16px;
-      padding: 20px 0;
-      border-bottom: 1px solid #C8C0B0;
+      padding: 16px 0;
+      border-bottom: 1px solid #E8E0D0;
     }
     .step:last-child { border-bottom: none; }
     .step-num {
-      font-size: 20px;
+      font-size: 15px;
       font-weight: 700;
       color: #1A6B3C;
       padding-top: 2px;
     }
     .step-title {
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 700;
       letter-spacing: 0.5px;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
     .step-body {
-      font-size: 17px;
-      line-height: 1.8;
-      color: #444;
+      font-size: 15px;
+      line-height: 1.7;
+      color: #555;
     }
 
     /* ── Fees ── */
@@ -232,13 +313,25 @@
       line-height: 1.8;
       color: #444;
     }
-    .policy-body ul {
+    .policy-block ul {
       list-style: none;
       padding: 0;
-      margin: 8px 0 0 0;
+      margin: 8px 0 8px 0;
+      padding-left: 24px;
     }
-    .policy-body ul li { padding-left: 16px; }
-    .policy-body ul li::before { content: '• '; }
+    .policy-block ul li {
+      position: relative;
+      padding-left: 14px;
+      margin-bottom: 4px;
+      font-size: 13px;
+      line-height: 1.7;
+      color: #444;
+    }
+    .policy-block ul li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+    }
 
     /* ── FAQ ── */
     .faq-list {
@@ -305,7 +398,27 @@
       <li><a href="#faq">FAQ</a></li>
       <li><a href="mailto:support@sunexplode.com">Support</a></li>
     </ul>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+  <div class="nav-mobile" id="navMobile">
+    <a href="#how-it-works" onclick="closeNav()">How It Works</a>
+    <a href="#pricing" onclick="closeNav()">Pricing</a>
+    <a href="#policies" onclick="closeNav()">Policies</a>
+    <a href="#faq" onclick="closeNav()">FAQ</a>
+    <a href="mailto:support@sunexplode.com">Support</a>
+  </div>
+  <script>
+    var navToggle = document.getElementById('navToggle');
+    var navMobile = document.getElementById('navMobile');
+    navToggle.addEventListener('click', function() {
+      navMobile.classList.toggle('open');
+    });
+    function closeNav() {
+      navMobile.classList.remove('open');
+    }
+  </script>
 
   <!-- Hero -->
   <div class="section">
@@ -359,110 +472,123 @@
   <!-- How It Works -->
   <div class="section" id="how-it-works">
     <h2>How It Works</h2>
-    <div class="hiw-grid">
 
-      <!-- Wanted Ads column -->
-      <div>
-        <div class="hiw-col-title">📋 Wanted Ads</div>
-        <p style="font-size:13px;color:#444;line-height:1.8;margin:10px 0 0;">Need something done or looking for something specific? Post what you want, set your budget, and let people come to you.</p>
+    <!-- Lifecycle -->
+    <div class="lifecycle">
+      <div class="lifecycle-step">
+        <div class="lifecycle-num">01</div>
+        <div class="lifecycle-title">Seal</div>
+        <div class="lifecycle-desc">Both parties agree on terms and price. Payment locks into the Vault — secured until the deal is done.</div>
+      </div>
+      <div class="lifecycle-step">
+        <div class="lifecycle-num">02</div>
+        <div class="lifecycle-title">Fulfill</div>
+        <div class="lifecycle-desc">The specialist delivers the work, completes the job, or hands over the item, then submits proof.</div>
+      </div>
+      <div class="lifecycle-step">
+        <div class="lifecycle-num">03</div>
+        <div class="lifecycle-title">Release</div>
+        <div class="lifecycle-desc">The client confirms and releases payment. No response within 48 hours? Funds release automatically.</div>
+      </div>
+      <div class="lifecycle-step">
+        <div class="lifecycle-num">04</div>
+        <div class="lifecycle-title">Rate</div>
+        <div class="lifecycle-desc">Both parties leave a rating. Revealed simultaneously once both submit, building honest reputation.</div>
+      </div>
+    </div>
+
+    <!-- Expandable: Wanted Ads -->
+    <details class="hiw-details">
+      <summary>📋 Wanted Ads — how it works in detail</summary>
+      <div class="hiw-details-body">
+        <p style="font-size:13px;color:#555;line-height:1.7;margin-bottom:16px;">Need something done? Post what you want, set your budget, and let specialists come to you.</p>
         <div class="steps">
-
           <div class="step">
             <div class="step-num">01</div>
             <div>
               <div class="step-title">Post a Wanted Ad</div>
-              <p class="step-body">Describe what you need — a service, a task, or something specific you're looking for — set your budget, and pin it to your location. Your listing appears on the live map for nearby people to find.</p>
+              <p class="step-body">Describe what you need, set your budget, and pin it to your location. It appears on the live map for nearby people to find.</p>
             </div>
           </div>
-
           <div class="step">
             <div class="step-num">02</div>
             <div>
               <div class="step-title">Review Applicants</div>
-              <p class="step-body">Specialists apply with a note and an optional counter-offer. Browse their profiles, ratings, and past work before choosing who to hire.</p>
+              <p class="step-body">Specialists apply with a note and an optional counter-offer. Browse profiles and ratings before choosing who to hire.</p>
             </div>
           </div>
-
           <div class="step">
             <div class="step-num">03</div>
             <div>
               <div class="step-title">Seal the Pact</div>
-              <p class="step-body">Select your specialist and seal the Pact. Payment is <strong>authorized but not captured</strong> — funds are held securely until the work is done. Either party can cancel for free before work begins.</p>
+              <p class="step-body">Select your specialist and seal the deal. Payment is authorized but not captured — held securely until the work is done.</p>
             </div>
           </div>
-
           <div class="step">
             <div class="step-num">04</div>
             <div>
               <div class="step-title">Review &amp; Release</div>
-              <p class="step-body">The specialist submits proof of completion. You review and release payment. If you don't act within 48 hours, funds are released automatically.</p>
+              <p class="step-body">The specialist submits proof of completion. Review and release payment — or it releases automatically after 48 hours.</p>
             </div>
           </div>
-
           <div class="step">
             <div class="step-num">05</div>
             <div>
-              <div class="step-title">Rate &amp; Repeat</div>
-              <p class="step-body">Leave a rating for your specialist. Build a reputation that helps future clients and specialists trust each other.</p>
+              <div class="step-title">Rate</div>
+              <p class="step-body">Leave a rating for your specialist. Ratings are revealed once both parties submit.</p>
             </div>
           </div>
-
         </div>
       </div>
+    </details>
 
-      <!-- Classifieds column -->
-      <div>
-        <div class="hiw-col-title">🛠 Classifieds</div>
-        <p style="font-size:13px;color:#444;line-height:1.8;margin:10px 0 0;">Have a skill or something to sell? Post your listing, set your price, and let clients find you.</p>
+    <!-- Expandable: Classifieds -->
+    <details class="hiw-details">
+      <summary>🛠 Classifieds — how it works in detail</summary>
+      <div class="hiw-details-body">
+        <p style="font-size:13px;color:#555;line-height:1.7;margin-bottom:16px;">Have a skill or something to sell? Post your listing, set your price, and let clients find you.</p>
         <div class="steps">
-
           <div class="step">
             <div class="step-num">01</div>
             <div>
               <div class="step-title">Post a Classified</div>
-              <p class="step-body">Advertise what you offer — a service, a skill, or goods — set your price, and pin it to your location. Your listing appears on the live map for nearby clients to discover.</p>
+              <p class="step-body">Advertise what you offer — a service, skill, or item — set your price, and pin it to your location.</p>
             </div>
           </div>
-
           <div class="step">
             <div class="step-num">02</div>
             <div>
               <div class="step-title">Receive Requests</div>
-              <p class="step-body">Clients request what you're offering directly. Review their profile and ratings, then accept or decline — you're always in control of who you transact with.</p>
+              <p class="step-body">Clients request directly. Review their profile, then accept or decline — you're always in control.</p>
             </div>
           </div>
-
           <div class="step">
             <div class="step-num">03</div>
             <div>
               <div class="step-title">Seal the Pact</div>
-              <p class="step-body">Once you accept, the client seals the Pact. Payment is <strong>authorized but not captured</strong> — your payout is guaranteed once the work is done. Either party can cancel for free before work begins.</p>
+              <p class="step-body">Once you accept, the client seals the Pact. Payment is authorized but not captured — your payout is guaranteed once the work is done.</p>
             </div>
           </div>
-
           <div class="step">
             <div class="step-num">04</div>
             <div>
               <div class="step-title">Submit Proof &amp; Get Paid</div>
-              <p class="step-body">Complete the job and submit proof through the app — a photo, description, or both. Once the client releases payment, funds transfer to your payout account.</p>
+              <p class="step-body">Complete the job and submit proof through the app. Once the client releases payment, funds transfer to your account.</p>
             </div>
           </div>
-
           <div class="step">
             <div class="step-num">05</div>
             <div>
-              <div class="step-title">Rate &amp; Repeat</div>
-              <p class="step-body">Leave a rating for your client. A strong track record attracts more requests and helps you grow your reputation on the platform.</p>
+              <div class="step-title">Rate</div>
+              <p class="step-body">Leave a rating for your client. Ratings are revealed once both parties submit.</p>
             </div>
           </div>
-
         </div>
       </div>
+    </details>
 
-    </div>
-
-    <p style="font-size:12px;color:#888;margin-top:32px;line-height:1.8;">
-      If there's a disagreement on either path, either party can raise a dispute. Pact reviews the evidence and resolves in favour of the specialist (payment released) or the client (full refund issued).
+    <p style="font-size:12px;color:#888;margin-top:20px;line-height:1.8;">
+      Either party can raise a dispute if something goes wrong. Pact reviews the evidence and resolves in favour of the specialist, the client, or splits the funds.
     </p>
 
   </div>
@@ -595,11 +721,13 @@
       <p class="policy-body">
         Pact is a marketplace platform and does not itself sell goods or services — all transactions are arranged directly between users.
         Refunds are issued in the following circumstances:
-        <ul>
-          <li>A Pact is cancelled before proof submission — the full authorized amount is released at no charge.</li>
-          <li>A dispute is raised and resolved in the client's favour — the full pact amount is refunded to the original payment method.</li>
-          <li>A pact is voided due to a platform enforcement action — any captured funds are refunded in full.</li>
-        </ul>
+      </p>
+      <ul>
+        <li>A Pact is cancelled before proof submission — the full authorized amount is released at no charge.</li>
+        <li>A dispute is raised and resolved in the client's favour — the full pact amount is refunded to the original payment method.</li>
+        <li>A pact is voided due to a platform enforcement action — any captured funds are refunded in full.</li>
+      </ul>
+      <p class="policy-body">
         Refunds are processed through Stripe and typically appear within 5–10 business days depending on the card issuer.
         To request a refund outside of the above scenarios, contact <a href="mailto:support@sunexplode.com" style="color:#1A6B3C;">support@sunexplode.com</a>.
       </p>
@@ -610,10 +738,12 @@
       <p class="policy-body">
         If a client is unsatisfied with the completed work, either party may raise a dispute through the app before releasing payment.
         Both parties are required to submit evidence. Pact reviews the evidence and issues one of the following resolutions:
-        <ul>
-          <li><strong>In favour of the specialist</strong> — payment is captured and transferred to the specialist.</li>
-          <li><strong>In favour of the client</strong> — the full pact amount is refunded to the client.</li>
-        </ul>
+      </p>
+      <ul>
+        <li><strong>In favour of the specialist</strong> — payment is captured and transferred to the specialist.</li>
+        <li><strong>In favour of the client</strong> — the full pact amount is refunded to the client.</li>
+      </ul>
+      <p class="policy-body">
         Dispute decisions are final. For escalations, contact <a href="mailto:support@sunexplode.com" style="color:#1A6B3C;">support@sunexplode.com</a>.
         Users who repeatedly raise frivolous disputes may have their accounts suspended.
       </p>
@@ -654,12 +784,14 @@
       <p class="policy-body">
         From time to time Pact may offer promotional credits, fee waivers, or featured listing discounts.
         All promotions are:
-        <ul>
-          <li>Subject to availability and may be withdrawn at any time without notice.</li>
-          <li>Non-transferable and have no cash value unless stated otherwise.</li>
-          <li>Limited to one per user account unless explicitly stated.</li>
-          <li>Void where prohibited by law.</li>
-        </ul>
+      </p>
+      <ul>
+        <li>Subject to availability and may be withdrawn at any time without notice.</li>
+        <li>Non-transferable and have no cash value unless stated otherwise.</li>
+        <li>Limited to one per user account unless explicitly stated.</li>
+        <li>Void where prohibited by law.</li>
+      </ul>
+      <p class="policy-body">
         Abuse of promotional offers — including creating multiple accounts to claim the same promotion —
         is a violation of our <a href="/terms.html" style="color:#1A6B3C;">Terms of Service</a> and may result in account suspension.
       </p>
