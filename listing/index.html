@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ebedf5" />
+  <meta property="og:site_name" content="The Pact" />
+  <meta property="og:type" content="website" />
+  <title>The Pact</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Courier New', Courier, monospace;
+      background: #ebedf5;
+      color: #0A0A0A;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 480px;
+      margin: 0 auto;
+      min-height: 100vh;
+      border-left: 2px solid #0A0A0A;
+      border-right: 2px solid #0A0A0A;
+    }
+
+    @media (max-width: 500px) {
+      .page { border-left: none; border-right: none; }
+    }
+
+    /* Header */
+    .header {
+      border-bottom: 2px solid #0A0A0A;
+      padding: 16px 20px;
+    }
+    .logo { font-size: 20px; font-weight: bold; letter-spacing: 5px; }
+    .logo-sub { font-size: 9px; letter-spacing: 2.5px; color: #4A4A4A; margin-top: 3px; }
+
+    /* Image */
+    .listing-image {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+      border-bottom: 2px solid #0A0A0A;
+      background: #e0e8ed;
+    }
+    .listing-image-placeholder {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: #e0e8ed;
+      border-bottom: 2px solid #0A0A0A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #A0A0A0;
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+
+    /* Content */
+    .content { padding: 20px; }
+
+    .status-row { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+    .status-badge {
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      border: 2px solid #0A0A0A;
+      padding: 3px 8px;
+    }
+    .type-badge {
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      color: #4A4A4A;
+    }
+
+    .listing-title {
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+
+    .bounty-row { margin-bottom: 4px; }
+    .listing-bounty { font-size: 32px; font-weight: bold; letter-spacing: 1px; color: #1A6B3A; }
+    .listing-bounty-label { font-size: 9px; letter-spacing: 2px; color: #4A4A4A; margin-bottom: 20px; }
+
+    .divider { height: 1px; background: #A0A0A0; margin: 18px 0; opacity: 0.4; }
+
+    .listing-location { font-size: 10px; letter-spacing: 2px; color: #4A4A4A; margin-bottom: 14px; }
+    .listing-desc { font-size: 14px; line-height: 1.65; color: #4A4A4A; }
+
+    /* CTA */
+    .cta-section { padding: 4px 20px 32px; }
+
+    .btn-open {
+      display: block;
+      width: 100%;
+      background: #0A0A0A;
+      color: #ebedf5;
+      border: none;
+      padding: 18px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 3px;
+      cursor: pointer;
+      text-align: center;
+      margin-bottom: 12px;
+      transition: opacity 0.15s;
+    }
+    .btn-open:hover { opacity: 0.82; }
+
+    .download-prompt {
+      display: none;
+      border: 2px solid #0A0A0A;
+      background: #e0e8ed;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+    .download-prompt.visible { display: block; }
+    .download-prompt-text {
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: #4A4A4A;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .store-row { display: flex; gap: 10px; }
+    .btn-store {
+      flex: 1;
+      display: block;
+      border: 2px solid #0A0A0A;
+      padding: 12px 8px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 10px;
+      letter-spacing: 2px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      color: #0A0A0A;
+      background: transparent;
+      transition: background 0.15s, color 0.15s;
+    }
+    .btn-store:hover { background: #0A0A0A; color: #ebedf5; }
+
+    .cta-note {
+      font-size: 9px;
+      color: #A0A0A0;
+      text-align: center;
+      letter-spacing: 1.5px;
+      margin-top: 14px;
+    }
+
+    /* States */
+    .state-center {
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .state-title { font-size: 16px; letter-spacing: 4px; font-weight: bold; }
+    .state-desc { font-size: 13px; color: #4A4A4A; line-height: 1.6; }
+
+    .spinner {
+      width: 22px;
+      height: 22px;
+      border: 2px solid #e0e8ed;
+      border-top-color: #0A0A0A;
+      border-radius: 50%;
+      animation: spin 0.75s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <div class="header">
+      <div class="logo">THE PACT</div>
+      <div class="logo-sub">CLASSIFIEDS &amp; QUESTS</div>
+    </div>
+
+    <div id="view-loading" class="state-center">
+      <div class="spinner"></div>
+      <div class="state-desc">Loading listing…</div>
+    </div>
+
+    <div id="view-error" class="state-center" style="display:none">
+      <div class="state-title">NOT FOUND</div>
+      <div class="state-desc">This listing may have been removed or the link is invalid.</div>
+    </div>
+
+    <div id="view-listing" style="display:none">
+      <img id="listing-img" class="listing-image" alt="Listing image" style="display:none" />
+      <div id="listing-img-placeholder" class="listing-image-placeholder" style="display:none">NO IMAGE</div>
+
+      <div class="content">
+        <div class="status-row">
+          <div id="listing-status" class="status-badge"></div>
+          <div id="listing-type" class="type-badge"></div>
+        </div>
+        <div id="listing-title" class="listing-title"></div>
+        <div class="bounty-row">
+          <span id="listing-bounty" class="listing-bounty"></span>
+        </div>
+        <div class="listing-bounty-label">BOUNTY</div>
+        <div id="listing-location" class="listing-location" style="display:none"></div>
+        <div class="divider"></div>
+        <div id="listing-desc" class="listing-desc"></div>
+      </div>
+
+      <div class="cta-section">
+        <button class="btn-open" id="btn-open">⚔ OPEN IN THE PACT</button>
+
+        <div id="download-prompt" class="download-prompt">
+          <div class="download-prompt-text">Don't have the app? Download it free.</div>
+          <div class="store-row">
+            <a id="btn-ios" class="btn-store" href="#" target="_blank" rel="noopener">APP STORE</a>
+            <a id="btn-android" class="btn-store" href="#" target="_blank" rel="noopener">PLAY STORE</a>
+          </div>
+        </div>
+
+        <div class="cta-note">FREE TO JOIN · P2P MARKETPLACE FOR QUESTS &amp; CLASSIFIEDS</div>
+      </div>
+    </div>
+
+  </div>
+
+  <script type="module">
+    import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
+    const SUPABASE_URL  = 'https://thhespbrijfgbflzyeqa.supabase.co';
+    const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRoaGVzcGJyaWpmZ2JmbHp5ZXFhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY3MjMxNjYsImV4cCI6MjA5MjI5OTE2Nn0.l3lmtlsLLvNQ-SUZg465M3wCDfGaNS-Itu81Ydo8nSM';
+
+    // Swap these in once the app is live on the stores.
+    const IOS_URL     = '#';
+    const ANDROID_URL = '#';
+
+    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON);
+
+    const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+    const pathParts  = window.location.pathname.split('/').filter(Boolean);
+    const listingId  = pathParts[pathParts.length - 1] ?? '';
+
+    if (!UUID_RE.test(listingId)) {
+      showError();
+    } else {
+      loadListing(listingId);
+    }
+
+    async function loadListing(id) {
+      const { data, error } = await supabase
+        .from('tblListing')
+        .select('strTitle, strDescription, arrImageUrls, arrThumbUrls, intBaseBounty, intStatus, strCity, strState, strType')
+        .eq('idListing', id)
+        .single();
+
+      if (error || !data) { showError(); return; }
+      renderListing(data, id);
+    }
+
+    function formatCents(cents) {
+      return '$' + (cents / 100).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function statusLabel(s) {
+      const labels = {
+        0: 'DRAFT', 1: 'OPEN', 2: 'IN PROGRESS',
+        3: 'PROOF SUBMITTED', 4: 'COMPLETED', 5: 'DISPUTED', 6: 'CANCELLED',
+      };
+      return labels[s] ?? 'OPEN';
+    }
+
+    function renderListing(data, id) {
+      document.title = `${data.strTitle} — The Pact`;
+
+      // Update OG tags dynamically (won't affect social crawlers without SSR,
+      // but useful for in-browser share previews).
+      setMeta('og:title', data.strTitle);
+      setMeta('og:description', data.strDescription ?? '');
+      const imgUrl = data.arrThumbUrls?.[0] ?? data.arrImageUrls?.[0] ?? null;
+      if (imgUrl) setMeta('og:image', imgUrl);
+
+      // Image
+      const img = document.getElementById('listing-img');
+      const placeholder = document.getElementById('listing-img-placeholder');
+      if (imgUrl) {
+        img.src = imgUrl;
+        img.style.display = 'block';
+        img.onerror = () => { img.style.display = 'none'; placeholder.style.display = 'flex'; };
+      } else {
+        placeholder.style.display = 'flex';
+      }
+
+      // Status & type
+      document.getElementById('listing-status').textContent = statusLabel(data.intStatus);
+      if (data.strType) {
+        document.getElementById('listing-type').textContent = data.strType.toUpperCase();
+      }
+
+      // Title & bounty
+      document.getElementById('listing-title').textContent = data.strTitle;
+      document.getElementById('listing-bounty').textContent = formatCents(data.intBaseBounty);
+
+      // Location
+      const locationParts = [data.strCity, data.strState].filter(Boolean);
+      if (locationParts.length) {
+        const el = document.getElementById('listing-location');
+        el.textContent = '📍 ' + locationParts.join(', ').toUpperCase();
+        el.style.display = 'block';
+      }
+
+      // Description
+      if (data.strDescription) {
+        document.getElementById('listing-desc').textContent = data.strDescription;
+      }
+
+      // Store links
+      document.getElementById('btn-ios').href     = IOS_URL;
+      document.getElementById('btn-android').href = ANDROID_URL;
+
+      // Deep link — attempt pact://, fall back to store prompt after 1.5s
+      document.getElementById('btn-open').addEventListener('click', () => {
+        window.location.href = `pact://listing/${id}`;
+        setTimeout(() => {
+          document.getElementById('download-prompt').classList.add('visible');
+        }, 1500);
+      });
+
+      document.getElementById('view-loading').style.display = 'none';
+      document.getElementById('view-listing').style.display  = 'block';
+    }
+
+    function showError() {
+      document.getElementById('view-loading').style.display = 'none';
+      document.getElementById('view-error').style.display   = 'flex';
+    }
+
+    function setMeta(property, content) {
+      let el = document.querySelector(`meta[property="${property}"]`);
+      if (!el) { el = document.createElement('meta'); el.setAttribute('property', property); document.head.appendChild(el); }
+      el.setAttribute('content', content);
+    }
+  </script>
+</body>
+</html>
