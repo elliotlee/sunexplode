@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pact — Peer-to-Peer Marketplace</title>
+  <title>Pact — Local Marketplace</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <style>
@@ -390,7 +390,7 @@
 
   <!-- Nav -->
   <nav>
-    <span class="nav-logo">Pact: p2p marketplace</span>
+    <span class="nav-logo">Pact: local marketplace</span>
     <ul class="nav-links">
       <li><a href="#how-it-works">How It Works</a></li>
       <li><a href="#pricing">Pricing</a></li>
@@ -422,13 +422,13 @@
 
   <!-- Hero -->
   <div class="section">
-    <p class="hero-tag">Peer-to-peer marketplace</p>
-    <h1>Pact: p2p marketplace</h1>
+    <p class="hero-tag">Local marketplace</p>
+    <h1>Pact: local marketplace</h1>
     <h2 style="font-size:clamp(14px,2.5vw,22px);letter-spacing:1.5px;font-weight:700;margin:20px 0 20px;text-transform:none;white-space:nowrap;">Buy, sell, and get things done locally.<br>With payment protection built in.</h2>
     <p class="hero-sub">
       Whether you need a job done, want to buy something nearby, or have skills and goods to offer — transacting with people you don't know shouldn't require blind trust.
       <br><br>
-      Pact holds payment in escrow until both parties are satisfied. No more chasing payments, no more paying for nothing.
+      Your card is saved when a Pact is sealed — nothing is charged until you confirm the work is done. No more chasing payments, no more paying for nothing.
       Post what you need or what you offer, agree on a price, and let Pact handle the rest.
     </p>
     <a href="#how-it-works" class="btn">HOW IT WORKS</a>
@@ -478,7 +478,7 @@
       <div class="lifecycle-step">
         <div class="lifecycle-num">01</div>
         <div class="lifecycle-title">Seal</div>
-        <div class="lifecycle-desc">Both parties agree on terms and price. Payment locks into the Vault — secured until the deal is done.</div>
+        <div class="lifecycle-desc">Both parties agree on terms and price. The client's card is saved — nothing is charged until the work is confirmed complete.</div>
       </div>
       <div class="lifecycle-step">
         <div class="lifecycle-num">02</div>
@@ -488,7 +488,7 @@
       <div class="lifecycle-step">
         <div class="lifecycle-num">03</div>
         <div class="lifecycle-title">Release</div>
-        <div class="lifecycle-desc">The client confirms and releases payment. No response within 48 hours? Funds release automatically.</div>
+        <div class="lifecycle-desc">The client confirms and releases payment. No response within 48 hours? Payment releases automatically.</div>
       </div>
       <div class="lifecycle-step">
         <div class="lifecycle-num">04</div>
@@ -521,7 +521,7 @@
             <div class="step-num">03</div>
             <div>
               <div class="step-title">Seal the Pact</div>
-              <p class="step-body">Select your specialist and seal the deal. Payment is authorized but not captured — held securely until the work is done.</p>
+              <p class="step-body">Select your specialist and seal the deal. Your card is saved but not charged — payment only goes to the specialist once the work is confirmed complete.</p>
             </div>
           </div>
           <div class="step">
@@ -566,7 +566,7 @@
             <div class="step-num">03</div>
             <div>
               <div class="step-title">Seal the Pact</div>
-              <p class="step-body">Once you accept, the client seals the Pact. Payment is authorized but not captured — your payout is guaranteed once the work is done.</p>
+              <p class="step-body">Once you accept, the client seals the Pact. The client's card is saved but not charged — your payout is sent directly once the work is confirmed complete.</p>
             </div>
           </div>
           <div class="step">
@@ -588,7 +588,7 @@
     </details>
 
     <p style="font-size:12px;color:#888;margin-top:20px;line-height:1.8;">
-      Either party can raise a dispute if something goes wrong. Pact reviews the evidence and resolves in favour of the specialist, the client, or splits the funds.
+      Either party can raise a dispute if something goes wrong. Pact reviews the evidence and resolves in favour of the specialist, the client, or splits the payment.
     </p>
 
   </div>
@@ -650,7 +650,7 @@
       <div class="faq-item">
         <div class="faq-q">What happens if I'm not happy with the work?</div>
         <p class="faq-a">
-          Don't release the funds. Instead, raise a dispute through the app and submit your evidence.
+          Don't release payment. Instead, raise a dispute through the app and submit your evidence.
           Pact will review both sides and issue a resolution — either releasing payment to the specialist
           or refunding the full amount to you.
         </p>
@@ -659,7 +659,7 @@
       <div class="faq-item">
         <div class="faq-q">When does the specialist get paid?</div>
         <p class="faq-a">
-          Once the client releases the funds or the 48-hour auto-release window passes after proof submission.
+          Once the client releases payment or the 48-hour auto-release window passes after proof submission.
           Funds are transferred to the specialist's connected Stripe Express payout account.
           Scheduled payouts process every Friday; immediate payouts are available for a small fee.
         </p>
@@ -668,9 +668,8 @@
       <div class="faq-item">
         <div class="faq-q">What if a pact is cancelled?</div>
         <p class="faq-a">
-          Either party can cancel at no cost before proof is submitted. The payment authorization hold
-          is released immediately and no charge is made. Once proof has been submitted, cancellation
-          is no longer available — only release or dispute.
+          Either party can cancel at no cost before proof is submitted. Your card is never charged.
+          Once proof has been submitted, cancellation is no longer available — only release or dispute.
         </p>
       </div>
 
@@ -678,8 +677,8 @@
         <div class="faq-q">Is my payment information secure?</div>
         <p class="faq-a">
           Yes. All payments are processed by <strong>Stripe</strong> — a PCI-DSS Level 1 certified payment processor.
-          Pact never stores card numbers. Payment is authorized at seal time and only captured
-          when the work is confirmed complete.
+          Pact never stores card numbers. Stripe saves your payment method at seal time and charges it
+          only when the work is confirmed complete.
         </p>
       </div>
 
@@ -710,9 +709,9 @@
       <div class="policy-heading">Cancellation Policy</div>
       <p class="policy-body">
         Either party may cancel a Pact at any time <strong>before proof of completion is submitted</strong> at no cost.
-        The payment authorization hold is released immediately and no charge is made to the client.
+        No charge is ever made to the client on a cancelled Pact.
         Once a specialist has submitted proof of completion, cancellation is no longer available —
-        the client must either release the funds or raise a dispute.
+        the client must either release payment or raise a dispute.
       </p>
     </div>
 
@@ -723,9 +722,9 @@
         Refunds are issued in the following circumstances:
       </p>
       <ul>
-        <li>A Pact is cancelled before proof submission — the full authorized amount is released at no charge.</li>
+        <li>A Pact is cancelled before proof submission — no charge is made to the client.</li>
         <li>A dispute is raised and resolved in the client's favour — the full pact amount is refunded to the original payment method.</li>
-        <li>A pact is voided due to a platform enforcement action — any captured funds are refunded in full.</li>
+        <li>A pact is voided due to a platform enforcement action — any charges are refunded in full.</li>
       </ul>
       <p class="policy-body">
         Refunds are processed through Stripe and typically appear within 5–10 business days depending on the card issuer.
@@ -740,8 +739,8 @@
         Both parties are required to submit evidence. Pact reviews the evidence and issues one of the following resolutions:
       </p>
       <ul>
-        <li><strong>In favour of the specialist</strong> — payment is captured and transferred to the specialist.</li>
-        <li><strong>In favour of the client</strong> — the full pact amount is refunded to the client.</li>
+        <li><strong>In favour of the specialist</strong> — payment is charged and transferred to the specialist.</li>
+        <li><strong>In favour of the client</strong> — the full pact amount is refunded to the client's original payment method.</li>
       </ul>
       <p class="policy-body">
         Dispute decisions are final. For escalations, contact <a href="mailto:support@sunexplode.com" style="color:#1A6B3C;">support@sunexplode.com</a>.
@@ -762,8 +761,8 @@
       <div class="policy-heading">Off-Platform Payments</div>
       <p class="policy-body">
         Arranging payment outside of the Pact platform is strictly prohibited and may result in a permanent ban.
-        Pact's escrow-based payment system exists specifically to protect both parties — bypassing it removes the
-        dispute resolution, refund guarantees, and payment security that the platform is designed to provide.
+        Pact's payment system exists specifically to protect both parties — bypassing it removes the
+        dispute resolution, refund guarantees, and payment protections the platform provides.
         All transactions arranged through Pact must be completed through the app.
       </p>
     </div>

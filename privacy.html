@@ -126,8 +126,8 @@
     </ul>
 
     <h3>Financial information</h3>
-    <p>In Phase 1 (current version), no real payment card data is processed by Pact. Payment processing will be handled by Stripe in a future version. When Stripe is integrated, card data is collected and stored solely by Stripe — Pact never stores raw card numbers or CVVs. Refer to Stripe's Privacy Policy for details on how Stripe handles payment data.</p>
-    <p>Vault balance transactions (credits and debits) are recorded in our ledger.</p>
+    <p>All payment card data is collected and stored solely by Stripe — Pact never stores raw card numbers or CVVs. When you seal a Pact, a payment method is saved via Stripe and charged only when the work is confirmed complete, with funds going directly to the specialist's connected account. Refer to Stripe's Privacy Policy for details on how Stripe handles payment data.</p>
+    <p>Promotional credit transactions are recorded in our ledger.</p>
 
     <h2>2. How We Use Your Information</h2>
     <p>We use the information we collect to:</p>
@@ -161,7 +161,7 @@
       <li>Expo / Expo Push Service (push notification delivery to FCM and APNs)</li>
       <li>Google Maps (mapping and geocoding — location data shared per Google's Privacy Policy)</li>
       <li>SMS gateway provider (phone number shared solely to deliver verification codes to opted-in users; not used for any other purpose)</li>
-      <li>Stripe (payment processing, Phase 2 only)</li>
+      <li>Stripe (payment processing — card saving, charging, and specialist payouts)</li>
     </ul>
 
     <h3>SMS data — no marketing use</h3>
