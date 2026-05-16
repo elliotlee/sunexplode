@@ -521,7 +521,7 @@
             <div class="step-num">03</div>
             <div>
               <div class="step-title">Seal the Pact</div>
-              <p class="step-body">Select your specialist and seal the deal. Payment is authorized but not captured — held securely until the work is done.</p>
+              <p class="step-body">Select your specialist and seal the deal. Payment is held in escrow — secured until the work is done.</p>
             </div>
           </div>
           <div class="step">
@@ -566,7 +566,7 @@
             <div class="step-num">03</div>
             <div>
               <div class="step-title">Seal the Pact</div>
-              <p class="step-body">Once you accept, the client seals the Pact. Payment is authorized but not captured — your payout is guaranteed once the work is done.</p>
+              <p class="step-body">Once you accept, the client seals the Pact. Payment is held in escrow — your payout is guaranteed once the work is done.</p>
             </div>
           </div>
           <div class="step">
@@ -598,7 +598,7 @@
     <h2>Pricing</h2>
     <p style="font-size:13px;line-height:1.8;color:#444;max-width:540px;">
       Pact charges a small platform fee on each completed transaction. There are no listing fees,
-      no subscription costs, and no charges if a pact is cancelled before work begins.
+      no subscription costs, and a full refund if a pact is cancelled before work begins.
     </p>
 
     <div class="fee-box">
@@ -630,10 +630,9 @@
     </div>
 
     <p style="font-size:12px;color:#888;margin-top:16px;line-height:1.8;">
-      Card processing fees are estimates based on standard Stripe rates and vary by card type.
+      Card processing fees are estimates based on standard Braintree rates and vary by card type.
       Tax is calculated at checkout based on the applicable rate for your location.
-      Specialists must connect a payout account via Stripe Express to receive funds.
-      Payout processing fees apply for immediate withdrawals — see the app for current rates.
+      Specialists must connect a payout account via Braintree to receive funds.
     </p>
   </div>
 
@@ -660,26 +659,25 @@
         <div class="faq-q">When does the specialist get paid?</div>
         <p class="faq-a">
           Once the client releases the funds or the 48-hour auto-release window passes after proof submission.
-          Funds are transferred to the specialist's connected Stripe Express payout account.
-          Scheduled payouts process every Friday; immediate payouts are available for a small fee.
+          Funds are released from escrow and transferred to the specialist's connected payout account via Braintree.
         </p>
       </div>
 
       <div class="faq-item">
         <div class="faq-q">What if a pact is cancelled?</div>
         <p class="faq-a">
-          Either party can cancel at no cost before proof is submitted. The payment authorization hold
-          is released immediately and no charge is made. Once proof has been submitted, cancellation
-          is no longer available — only release or dispute.
+          Either party can cancel before proof is submitted. The escrowed payment is refunded in full
+          to the client's original payment method — typically within 5–10 business days. Once proof
+          has been submitted, cancellation is no longer available — only release or dispute.
         </p>
       </div>
 
       <div class="faq-item">
         <div class="faq-q">Is my payment information secure?</div>
         <p class="faq-a">
-          Yes. All payments are processed by <strong>Stripe</strong> — a PCI-DSS Level 1 certified payment processor.
-          Pact never stores card numbers. Payment is authorized at seal time and only captured
-          when the work is confirmed complete.
+          Yes. All payments are processed by <strong>Braintree</strong> — a PCI-DSS Level 1 certified payment processor (a PayPal service).
+          Pact never stores card numbers. Payment is held in escrow at seal time and released to the specialist
+          only when the work is confirmed complete.
         </p>
       </div>
 
@@ -709,8 +707,8 @@
     <div class="policy-block">
       <div class="policy-heading">Cancellation Policy</div>
       <p class="policy-body">
-        Either party may cancel a Pact at any time <strong>before proof of completion is submitted</strong> at no cost.
-        The payment authorization hold is released immediately and no charge is made to the client.
+        Either party may cancel a Pact at any time <strong>before proof of completion is submitted</strong>.
+        The escrowed payment is refunded in full to the client's original payment method.
         Once a specialist has submitted proof of completion, cancellation is no longer available —
         the client must either release the funds or raise a dispute.
       </p>
@@ -723,12 +721,12 @@
         Refunds are issued in the following circumstances:
       </p>
       <ul>
-        <li>A Pact is cancelled before proof submission — the full authorized amount is released at no charge.</li>
+        <li>A Pact is cancelled before proof submission — the full escrowed amount is refunded to the client's original payment method.</li>
         <li>A dispute is raised and resolved in the client's favour — the full pact amount is refunded to the original payment method.</li>
-        <li>A pact is voided due to a platform enforcement action — any captured funds are refunded in full.</li>
+        <li>A pact is voided due to a platform enforcement action — any escrowed funds are refunded in full.</li>
       </ul>
       <p class="policy-body">
-        Refunds are processed through Stripe and typically appear within 5–10 business days depending on the card issuer.
+        Refunds are processed through Braintree and typically appear within 5–10 business days depending on the card issuer.
         To request a refund outside of the above scenarios, contact <a href="mailto:support@sunexplode.com" style="color:#1A6B3C;">support@sunexplode.com</a>.
       </p>
     </div>
@@ -740,7 +738,7 @@
         Both parties are required to submit evidence. Pact reviews the evidence and issues one of the following resolutions:
       </p>
       <ul>
-        <li><strong>In favour of the specialist</strong> — payment is captured and transferred to the specialist.</li>
+        <li><strong>In favour of the specialist</strong> — payment is released from escrow and transferred to the specialist.</li>
         <li><strong>In favour of the client</strong> — the full pact amount is refunded to the client.</li>
       </ul>
       <p class="policy-body">
